@@ -1,0 +1,24 @@
+{
+  "name": "crunchbase2",
+  "version": "0.1.0",
+  "description": "Node module that wraps Crunchbase API",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/coding-house/crunchbase2.git"
+  },
+  "keywords": [
+    "crunchbase",
+    "techcrunch",
+    "api"
+  ],
+  "author": "CodingHouse 2014 Winter Cohort",
+  "engines": {
+    "node": "*"
+  },
+  "homepage": "https://github.com/coding-house/crunchbase2",
+  "dependencies": {
+    "qs": "^2.3.3",
+    "request": ">= 0.0.1"
+  }
+}

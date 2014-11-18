@@ -18,6 +18,11 @@ function getProducts(params, callback) {
   createRequest(url, callback);
 }
 
+function getProduct(permalink, callback) {
+  var url = urlHelper.getProductUrl(permalink);
+  createRequest(url, callback);
+}
+
 function getPeople(page, callback){
   var url = urlHelper.getPeopleUrl(page);
   createRequest(url, callback);
@@ -41,7 +46,6 @@ function createRequest(url, callback) {
     }
   });
 }
-
 module.exports = {
   init: function(apikey) {
     return init(apikey);
@@ -50,16 +54,26 @@ module.exports = {
   organizations: function(params, callback) {
     return getOrganizations(params, callback);
   },
+
   products: function(params, callback) {
     return getProducts(params, callback);
   },
+
+  product: function(permalink, callback) {
+    return getProduct(permalink, callback);
+  },
+
   people: function(page, callback) {
     return getPeople(page, callback);
   },
+
   person: function(permalink, callback) {
     return getPerson(permalink, callback);
   },
+
   organization: function(permalink, callback) {
     return getOrganization(permalink, callback);
   }
 }
+
+

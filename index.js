@@ -13,6 +13,10 @@ function getOrganizations(params, callback) {
   createRequest(url, callback);
 }
 
+function getProduct(permalink, callback) {
+  var url = urlHelper.getProductUrl(permalink);
+  createRequest(url, callback);
+}
 function createRequest(url, callback) {
   request(url, function (error, response, body) {
     try {
@@ -22,7 +26,6 @@ function createRequest(url, callback) {
     }
   });
 }
-
 module.exports = {
   init: function(apikey) {
     return init(apikey);
@@ -30,5 +33,10 @@ module.exports = {
 
   organizations: function(params, callback) {
     return getOrganizations(params, callback);
-  }
+  },
+  product: function(permalink, callback) {
+  return getProduct(permalink, callback);
+ }
 }
+
+

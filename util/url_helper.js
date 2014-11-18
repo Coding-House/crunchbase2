@@ -9,8 +9,19 @@ function getOrganizationsUrl(params) {
   + '&' + qs.stringify(params);
 }
 
+//Products
+function getProductsUrl(params) {
+  return endpoint
+  + 'products?' + keyParam + '=' + config.apikey
+  + '&' + qs.stringify(params);
+}
+
 module.exports = {
   getOrganizationsUrl: function(params) {
     return getOrganizationsUrl(params);
+  },
+  getProductsUrl: function(params) {
+    return getProductsUrl(params);
   }
+
 }

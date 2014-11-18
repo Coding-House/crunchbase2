@@ -27,6 +27,10 @@ function getPerson(permalink, callback){
   var url = urlHelper.getPersonUrl(permalink);
   createRequest(url, callback);
 }
+function getOrganization(permalink, callback) {
+  var url = urlHelper.getOrganizationUrl(permalink);
+  createRequest(url, callback);
+}
 
 function createRequest(url, callback) {
   request(url, function (error, response, body) {
@@ -52,6 +56,9 @@ module.exports = {
   },
   person: function(permalink, callback) {
     return getPerson(permalink, callback);
+  },
+  organization: function(permalink, callback) {
+    return getOrganization(permalink, callback);
   }
 }
 

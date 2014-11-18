@@ -13,6 +13,16 @@ function getOrganizations(params, callback) {
   createRequest(url, callback);
 }
 
+function getPeople(page, callback){
+  var url = urlHelper.getPeopleUrl(page);
+  createRequest(url, callback);
+}
+
+function getPerson(permalink, callback){
+  var url = urlHelper.getPersonUrl(permalink);
+  createRequest(url, callback);
+}
+
 function createRequest(url, callback) {
   request(url, function (error, response, body) {
     try {
@@ -30,5 +40,11 @@ module.exports = {
 
   organizations: function(params, callback) {
     return getOrganizations(params, callback);
+  },
+  people: function(page, callback) {
+    return getPeople(page, callback);
+  },
+  person: function(permalink, callback) {
+    return getPerson(permalink, callback);
   }
 }

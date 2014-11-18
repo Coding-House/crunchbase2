@@ -9,8 +9,31 @@ function getOrganizationsUrl(params) {
   + '&' + qs.stringify(params);
 }
 
+function getPeopleUrl(page){
+  return endpoint
+  + 'people?' 
+  + keyParam + '=' + config.apikey;
+  + "&" + "=" + qs.stringify(page)
+}
+
+function getPersonUrl(permalink){
+  return endpoint
+  + 'person/' 
+  + permalink
+  + "?"
+  + keyParam + '=' + config.apikey
+}
+
 module.exports = {
   getOrganizationsUrl: function(params) {
     return getOrganizationsUrl(params);
+  },
+
+  getPeopleUrl: function(page) {
+    return getPeopleUrl(page);
+  },
+
+  getPersonUrl: function(permalink) {
+    return getPersonUrl(permalink);
   }
 }

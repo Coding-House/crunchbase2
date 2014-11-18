@@ -23,6 +23,10 @@ function getPersonUrl(permalink){
   + "?"
   + keyParam + '=' + config.apikey
 }
+function getOrganizationUrl(permalink) {
+  return endpoint
+  + 'organization/' + permalink + '?' + keyParam + '=' + config.apikey;
+}
 
 module.exports = {
   getOrganizationsUrl: function(params) {
@@ -35,5 +39,8 @@ module.exports = {
 
   getPersonUrl: function(permalink) {
     return getPersonUrl(permalink);
+  },
+  getOrganizationUrl: function(permalink) {
+    return getOrganizationUrl(permalink);
   }
 }

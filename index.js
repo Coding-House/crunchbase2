@@ -13,8 +13,8 @@ function getOrganizations(params, callback) {
   createRequest(url, callback);
 }
 
-function getProduct(permalink, callback) {
-  var url = urlHelper.getProductUrl(permalink);
+function getOrganization(permalink, callback) {
+  var url = urlHelper.getOrganizationUrl(permalink);
   createRequest(url, callback);
 }
 
@@ -28,13 +28,13 @@ function getPerson(permalink, callback){
   createRequest(url, callback);
 }
 
-function getOrganization(permalink, callback) {
-  var url = urlHelper.getOrganizationUrl(permalink);
+function getProducts(params, callback) {
+  var url = urlHelper.getProductsUrl(params);
   createRequest(url, callback);
 }
 
-function getProducts(params, callback) {
-  var url = urlHelper.getProductsUrl(params);
+function getProduct(permalink, callback) {
+  var url = urlHelper.getProductUrl(permalink);
   createRequest(url, callback);
 }
 
@@ -47,6 +47,7 @@ function createRequest(url, callback) {
     }
   });
 }
+
 module.exports = {
   init: function(apikey) {
     return init(apikey);
@@ -54,8 +55,8 @@ module.exports = {
   organizations: function(params, callback) {
     return getOrganizations(params, callback);
   },
-  product: function(permalink, callback) {
-    return getProduct(permalink, callback);
+  organization: function(permalink, callback) {
+    return getOrganization(permalink, callback);
   },
   people: function(page, callback) {
     return getPeople(page, callback);
@@ -63,10 +64,10 @@ module.exports = {
   person: function(permalink, callback) {
     return getPerson(permalink, callback);
   },
-  organization: function(permalink, callback) {
-    return getOrganization(permalink, callback);
-  },
   products: function(params, callback) {
     return getProducts(params, callback);
+  },
+  product: function(permalink, callback) {
+    return getProduct(permalink, callback);
   }
 }

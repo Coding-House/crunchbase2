@@ -3,48 +3,51 @@ var endpoint = "http://api.crunchbase.com/v/2/";
 var keyParam = "user_key";
 var qs = require("qs");
 
-function getProductUrl(permalink) {
-  return endpoint
-  + 'product/' + permalink + '?' 
-  + keyParam + '=' + config.apikey
-}
-
 function getOrganizationsUrl(params) {
   return endpoint
   + 'organizations?' + keyParam + '=' + config.apikey
   + '&' + qs.stringify(params);
 }
 
+function getOrganizationUrl(permalink) {
+  return endpoint
+  + 'organization/' + permalink + '?' + keyParam + '=' + config.apikey;
+}
+
 function getPeopleUrl(page){
   return endpoint
-  + 'people?' 
+  + 'people?'
   + keyParam + '=' + config.apikey;
   + "&" + "=" + qs.stringify(page)
 }
 
 function getPersonUrl(permalink){
   return endpoint
-  + 'person/' 
+  + 'person/'
   + permalink
   + "?"
   + keyParam + '=' + config.apikey
 }
-function getOrganizationUrl(permalink) {
-  return endpoint
-  + 'organization/' + permalink + '?' + keyParam + '=' + config.apikey;
-}
+
 function getProductsUrl(params) {
   return endpoint
   + 'products?' + keyParam + '=' + config.apikey
   + '&' + qs.stringify(params);
 }
 
+function getProductUrl(permalink) {
+  return endpoint
+  + 'product/' + permalink + '?'
+  + keyParam + '=' + config.apikey
+}
+
+
 module.exports = {
   getOrganizationsUrl: function(params) {
     return getOrganizationsUrl(params);
   },
-  getProductUrl: function(permalink) {
-    return getProductUrl(permalink);
+  getOrganizationUrl: function(permalink) {
+    return getOrganizationUrl(permalink);
   },
   getPeopleUrl: function(page) {
     return getPeopleUrl(page);
@@ -52,10 +55,10 @@ module.exports = {
   getPersonUrl: function(permalink) {
     return getPersonUrl(permalink);
   },
-  getOrganizationUrl: function(permalink) {
-    return getOrganizationUrl(permalink);
-  },
   getProductsUrl: function(params) {
     return getProductsUrl(params);
+  },
+  getProductUrl: function(permalink) {
+    return getProductUrl(permalink);
   }
 }

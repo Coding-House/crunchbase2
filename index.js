@@ -27,8 +27,14 @@ function getPerson(permalink, callback){
   var url = urlHelper.getPersonUrl(permalink);
   createRequest(url, callback);
 }
+
 function getOrganization(permalink, callback) {
   var url = urlHelper.getOrganizationUrl(permalink);
+  createRequest(url, callback);
+}
+
+function getProducts(params, callback) {
+  var url = urlHelper.getProductsUrl(params);
   createRequest(url, callback);
 }
 
@@ -59,7 +65,8 @@ module.exports = {
   },
   organization: function(permalink, callback) {
     return getOrganization(permalink, callback);
+  },
+  products: function(params, callback) {
+    return getProducts(params, callback);
   }
 }
-
-

@@ -33,6 +33,11 @@ function getOrganizationUrl(permalink) {
   return endpoint
   + 'organization/' + permalink + '?' + keyParam + '=' + config.apikey;
 }
+function getProductsUrl(params) {
+  return endpoint
+  + 'products?' + keyParam + '=' + config.apikey
+  + '&' + qs.stringify(params);
+}
 
 module.exports = {
   getOrganizationsUrl: function(params) {
@@ -49,5 +54,8 @@ module.exports = {
   },
   getOrganizationUrl: function(permalink) {
     return getOrganizationUrl(permalink);
+  },
+  getProductsUrl: function(params) {
+    return getProductsUrl(params);
   }
 }

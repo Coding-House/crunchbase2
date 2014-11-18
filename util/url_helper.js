@@ -1,8 +1,12 @@
-var config = require('../config');
 var qs = require('qs');
 
 var endpoint = 'http://api.crunchbase.com/v/2/';
-var keyParam = '?user_key=' + config.apikey;
+var keyParam, config = {};
+
+function init(apikey) {
+  config.apikey = apikey;
+  keyParam = '?user_key=' + config.apikey;
+}
 
 function getOrganizationsUrl(params) {
   return endpoint
@@ -38,6 +42,9 @@ function getProductUrl(permalink) {
 }
 
 module.exports = {
+  init: function(apikey) {
+    return init(apikey);
+  },
   getOrganizationsUrl: function(params) {
     return getOrganizationsUrl(params);
   },

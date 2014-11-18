@@ -1,6 +1,6 @@
 {
   "name": "crunchbase2",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "description": "Node module that wraps Crunchbase API V2",
   "main": "index.js",
   "repository": {

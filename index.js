@@ -1,11 +1,10 @@
 // Copyright 2014 CodingHouse Winter Cohort
 
-var config = require('./config'),
 request = require('request'),
 urlHelper = require('./util/url_helper');
 
 function init(apikey) {
-  config.apikey = apikey;
+  urlHelper.init(apikey);
 }
 
 function getOrganizations(params, callback) {

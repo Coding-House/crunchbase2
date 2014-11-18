@@ -1,10 +1,8 @@
 var config = require('../config');
-var endpoint = 'http://api.crunchbase.com/v/2/';
 var qs = require('qs');
 
-function keyParam() {
-  return '?user_key=' + config.apikey;
-}
+var endpoint = 'http://api.crunchbase.com/v/2/';
+var keyParam = '?user_key=' + config.apikey;
 
 function getOrganizationsUrl(params) {
   return endpoint

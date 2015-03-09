@@ -114,7 +114,7 @@ module.exports = {
   locations: function(params) {
     return getLocationsUrl(params, callback);
   },
-  getCatagoriesUrl: function(params) {
+  catagories: function(params) {
     return getCatagoriesUrl(params);
   }
 }

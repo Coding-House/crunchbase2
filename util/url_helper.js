@@ -41,6 +41,38 @@ function getProductUrl(permalink) {
   + 'product/' + permalink + keyParam;
 }
 
+function getFundingRoundUrl(uuid) {
+  return endpoint
+  + 'funding-round/' + uuid + keyParam;
+}
+
+function getAcquisitionUrl(uuid) {
+  return endpoint
+  + 'acquisition/' + uuid + keyParam;
+}
+
+function getIPOUrl(uuid) {
+  return endpoint
+  + 'ipo/' + uuid + keyParam;
+}
+
+function getFundRaiseUrl(uuid) {
+  return endpoint
+  + 'fund-raise/' + uuid + keyParam;
+}
+
+function getLocationsUrl(params) {
+  return endpoint
+  + 'locations' + keyParam
+  + '&' + qs.stringify(params);
+}
+
+function getCatagoriesUrl(params) {
+  return endpoint
+  + 'catagories' + keyParam
+  + '&' + qs.stringify(params);
+}
+
 module.exports = {
   init: function(apikey) {
     return init(apikey);
@@ -62,5 +94,23 @@ module.exports = {
   },
   getProductUrl: function(permalink) {
     return getProductUrl(permalink);
+  },
+  getFundingRoundUrl: function(uuid) {
+    return getFundingRoundUrl(uuid);
+  },
+  getAcquisitionUrl: function(uuid) {
+    return getAcquisitionUrl(uuid);
+  },
+  getIPOUrl: function(uuid) {
+    return getIPOUrl(uuid);
+  },
+  getFundRaiseUrl: function(uuid) {
+    return getFundRaiseUrl(uuid);
+  },
+  getLocationsUrl: function(params) {
+    return getLocationsUrl(params);
+  },
+  getCatagoriesUrl: function(params) {
+    return getCatagoriesUrl(params);
   }
 }

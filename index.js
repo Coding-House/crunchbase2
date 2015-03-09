@@ -37,6 +37,36 @@ function getProduct(permalink, callback) {
   createRequest(url, callback);
 }
 
+function getFundingRound(uuid, callback) {
+  var url = urlHelper.getFundingRoundUrl(uuid);
+  createRequest(url, callback);
+}
+
+function getAcquisition(uuid, callback) {
+  var url = urlHelper.getAcquisitionUrl(uuid);
+  createRequest(url, callback);
+}
+
+function getIPO(uuid, callback) {
+  var url = urlHelper.getIPOUrl(uuid);
+  createRequest(url, callback);
+}
+
+function getFundRaise(uuid, callback) {
+  var url = urlHelper.getFundRaiseUrl(uuid);
+  createRequest(url, callback);
+}
+
+function getLocations(params, callback) {
+  var url = urlHelper.getLocationsUrl(params);
+  createRequest(url, callback);
+}
+
+function getCatagories(params, callback) {
+  var url = urlHelper.getCatagoriesUrl(params);
+  createRequest(url, callback);
+}
+
 function createRequest(url, callback) {
   request(url, function (error, response, body) {
     try {
@@ -68,5 +98,23 @@ module.exports = {
   },
   product: function(permalink, callback) {
     return getProduct(permalink, callback);
+  },
+  fundingRound: function(uuid) {
+    return getFundingRound(uuid, callback);
+  },
+  acquisition: function(uuid) {
+    return getAcquisition(uuid, callback);
+  },
+  ipo: function(uuid) {
+    return getIPOUrl(uuid, callback);
+  },
+  fundRaise: function(uuid) {
+    return getFundRaiseUrl(uuid, callback);
+  },
+  locations: function(params) {
+    return getLocationsUrl(params, callback);
+  },
+  getCatagoriesUrl: function(params) {
+    return getCatagoriesUrl(params);
   }
 }

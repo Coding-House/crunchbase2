@@ -112,7 +112,7 @@ module.exports = {
     return getFundRaiseUrl(uuid, callback);
   },
   locations: function(params) {
-    return getLocationsUrl(params, callback);
+    return getLocations(params, callback);
   },
   catagories: function(params) {
     return getCatagoriesUrl(params);

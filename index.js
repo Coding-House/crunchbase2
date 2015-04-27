@@ -106,15 +106,15 @@ module.exports = {
     return getAcquisition(uuid, callback);
   },
   ipo: function(uuid) {
-    return getIPOUrl(uuid, callback);
+    return getIPO(uuid, callback);
   },
   fundRaise: function(uuid) {
-    return getFundRaiseUrl(uuid, callback);
+    return getFundRaise(uuid, callback);
   },
   locations: function(params) {
-    return getLocationsUrl(params, callback);
+    return getLocations(params, callback);
   },
   catagories: function(params) {
-    return getCatagoriesUrl(params);
+    return getCatagories(params);
   }
 }

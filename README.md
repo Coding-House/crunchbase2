@@ -10,7 +10,7 @@ crunchbase.init(apikey);
 
 // Lookup all organizations with keyword "airbnb"
 //Accepts title search query
-crunchbase.organizations( { query: "airbnb" } , function(error, results) {
+crunchbase.organizations( "airbnb" , function(error, results) {
   if (!error) {
     console.log(results) // Print the search results
   }
@@ -34,7 +34,7 @@ crunchbase.people( {query: "1" }, function(error, results) {
 
 //get a single person
 //accepts user permalink
-crunchbase.person( {query: "richard-czechowski" }, function(error, results) {
+crunchbase.person( "richard-czechowski" , function(error, results) {
   if (!error) {
     console.log(results) // Print the search results
   }

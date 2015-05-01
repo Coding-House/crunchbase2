@@ -10,7 +10,7 @@ crunchbase.init(apikey);
 
 // Lookup all organizations with keyword "airbnb"
 //Accepts title search query
-crunchbase.organizations( { query: "airbnb" } , function(error, results) {
+crunchbase.organizations( "airbnb" , function(error, results) {
   if (!error) {
     console.log(results) // Print the search results
   }

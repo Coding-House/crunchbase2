@@ -99,19 +99,19 @@ module.exports = {
   product: function(permalink, callback) {
     return getProduct(permalink, callback);
   },
-  fundingRound: function(uuid) {
+  fundingRound: function(uuid, callback) {
     return getFundingRound(uuid, callback);
   },
-  acquisition: function(uuid) {
+  acquisition: function(uuid, callback) {
     return getAcquisition(uuid, callback);
   },
-  ipo: function(uuid) {
+  ipo: function(uuid, callback) {
     return getIPO(uuid, callback);
   },
-  fundRaise: function(uuid) {
+  fundRaise: function(uuid, callback) {
     return getFundRaise(uuid, callback);
   },
-  locations: function(params) {
+  locations: function(params, callback) {
     return getLocations(params, callback);
   },
   catagories: function(params) {

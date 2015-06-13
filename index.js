@@ -99,22 +99,22 @@ module.exports = {
   product: function(permalink, callback) {
     return getProduct(permalink, callback);
   },
-  fundingRound: function(uuid, callback) {
+  fundingRound: function(uuid) {
     return getFundingRound(uuid, callback);
   },
-  acquisition: function(uuid, callback) {
+  acquisition: function(uuid) {
     return getAcquisition(uuid, callback);
   },
-  ipo: function(uuid, callback) {
-    return getIPO(uuid, callback);
+  ipo: function(uuid) {
+    return getIPOUrl(uuid, callback);
   },
-  fundRaise: function(uuid, callback) {
-    return getFundRaise(uuid, callback);
+  fundRaise: function(uuid) {
+    return getFundRaiseUrl(uuid, callback);
   },
   locations: function(params, callback) {
     return getLocations(params, callback);
   },
-  catagories: function(params) {
-    return getCatagories(params);
+  catagories: function(params, callback) {
+    return getCatagories(params, callback);
   }
 }

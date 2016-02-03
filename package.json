@@ -1,24 +1,79 @@
 {
-  "name": "crunchbase2",
-  "version": "0.1.4",
-  "description": "Node module that wraps Crunchbase API V2",
+  "name": "crunchbase-api",
+  "version": "0.2.0",
+  "description": "A node.js library for accessing the CrunchBase REST API",
   "main": "index.js",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "http://github.com/coding-house/crunchbase2.git"
+    "url": "https://github.com/robbiet480/node-crunchbase-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robbiet480/node-crunchbase-api/issues"
   },
   "keywords": [
     "crunchbase",
     "techcrunch",
     "api"
   ],
-  "author": "CodingHouse 2014 Winter Cohort",
+  "author": {
+    "name": "Robbie Trencheny",
+    "url": "https://github.com/robbiet480"
+  },
+  "contributors": [
+    {
+      "name": "Richard Czechowski",
+      "email": "rczec002@gmail.com",
+      "url": "https://github.com/RichardCzechowski"
+    },
+    {
+      "name": "Robbie Trencheny",
+      "email": "me@robbiet.us",
+      "url": "https://github.com/robbiet480"
+    },
+    {
+      "name": "Sam Michel",
+      "url": "https://github.com/toodlepip"
+    },
+    {
+      "name": "Samer Buna",
+      "email": "samer.buna@gmail.com",
+      "url": "https://github.com/samerbuna"
+    },
+    {
+      "name": "Bobby Whang",
+      "email": "robertwhang@gmail.com",
+      "url": "https://github.com/bobbywhang"
+    },
+    {
+      "name": "Ashwin",
+      "email": "ashwinkumark10@gmail.com",
+      "url": "https://github.com/ashking"
+    },
+    {
+      "name": "Ryan Janvier",
+      "email": "liquidtrends@gmail.com",
+      "url": "https://github.com/liquidtrends"
+    },
+    {
+      "name": "Sansr Ivas",
+      "url": "https://github.com/sansrivas"
+    },
+    {
+      "name": "Yogi",
+      "email": "iyogeshjoshi@gmail.com",
+      "url": "https://github.com/iyogeshjoshi"
+    },
+    {
+      "name": "CodingHouse 2014 Winter Cohort"
+    }
+  ],
   "engines": {
     "node": "*"
   },
-  "homepage": "https://github.com/coding-house/crunchbase2",
+  "homepage": "https://github.com/robbiet480/node-crunchbase-api",
   "dependencies": {
     "qs": "^2.3.3",
-    "request": ">= 0.0.1"
+    "request": ">=0.0.1"
   }
 }

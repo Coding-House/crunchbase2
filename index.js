@@ -1,9 +1,31 @@
-// Copyright 2014 CodingHouse Winter Cohort
+/* Copyright 2014 CodingHouse Winter Cohort
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
 
 request = require('request'),
 urlHelper = require('./util/url_helper');
 
-function init(apikey) {
+var redisClient;
+var cacheTimeout;
+var apiKey;
+
+function init(apikey, cache) {
+  if (cache) {
+    cacheTimeout = cache.timeout || 86400;
+    redisClient = require("redis").createClient(cache);
+  }
+  apiKey = apikey;
   urlHelper.init(apikey);
 }
 
@@ -68,18 +90,34 @@ function getCatagories(params, callback) {
 }
 
 function createRequest(url, callback) {
-  request(url, function (error, response, body) {
-    try {
-      callback(error, JSON.parse(body));
-    } catch (error) {
-      callback(error, body);
-    }
-  });
+  if (redisClient) {
+    var cleanedUrl = url.replace('?user_key=' + apiKey + '&','?');
+    redisClient.get(cleanedUrl, function(err, obj) {
+      if (err || obj === null) {
+        return request(url, function (error, response, body) {
+          if (!err) {
+            redisClient.set(cleanedUrl, JSON.stringify(JSON.parse(body)));
+            redisClient.expire(cleanedUrl, cacheTimeout);
+          }
+          callback(error, JSON.parse(body));
+        });
+      }
+      callback(err, JSON.parse(obj));
+    })
+  } else {
+    request(url, function (error, response, body) {
+      try {
+        callback(error, JSON.parse(body));
+      } catch (error) {
+        callback(error, body);
+      }
+    });
+  }
 }
 
 module.exports = {
-  init: function(apikey) {
-    return init(apikey);
+  init: function(apikey, cache) {
+    return init(apikey, cache);
   },
   organizations: function(params, callback) {
     return getOrganizations(params, callback);
@@ -99,22 +137,25 @@ module.exports = {
   product: function(permalink, callback) {
     return getProduct(permalink, callback);
   },
-  fundingRound: function(uuid, callback) {
+  fundingRound: function(uuid) {
     return getFundingRound(uuid, callback);
   },
-  acquisition: function(uuid, callback) {
+  acquisition: function(uuid) {
     return getAcquisition(uuid, callback);
   },
-  ipo: function(uuid, callback) {
-    return getIPO(uuid, callback);
+  ipo: function(uuid) {
+    return getIPOUrl(uuid, callback);
   },
-  fundRaise: function(uuid, callback) {
-    return getFundRaise(uuid, callback);
+  fundRaise: function(uuid) {
+    return getFundRaiseUrl(uuid, callback);
   },
   locations: function(params, callback) {
     return getLocations(params, callback);
   },
-  catagories: function(params) {
-    return getCatagories(params);
+  catagories: function(params, callback) {
+    return getCatagories(params, callback);
+  },
+  categories: function(params, callback) {
+    return getCategories(params, callback);
   }
 }

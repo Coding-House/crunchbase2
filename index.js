@@ -141,5 +141,8 @@ module.exports = {
   },
   catagories: function(params, callback) {
     return getCatagories(params, callback);
+  },
+  categories: function(params, callback) {
+    return getCategories(params, callback);
   }
 }

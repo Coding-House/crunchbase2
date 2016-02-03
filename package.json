@@ -1,11 +1,15 @@
 {
   "name": "crunchbase2",
-  "version": "0.1.4",
-  "description": "Node module that wraps Crunchbase API V2",
+  "version": "0.2.0",
+  "description": "A node.js library for accessing the Crunchbase REST API",
   "main": "index.js",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "http://github.com/coding-house/crunchbase2.git"
+    "url": "https://github.com/coding-house/crunchbase2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coding-house/crunchbase2/issues"
   },
   "keywords": [
     "crunchbase",
@@ -13,12 +17,22 @@
     "api"
   ],
   "author": "CodingHouse 2014 Winter Cohort",
+  "contributors": [
+    {
+      "name": "Robbie Trencheny",
+      "url": "https://github.com/robbiet480"
+    },
+    {
+      "name": "Ashwin",
+      "url": "https://github.com/ashking"
+    }
+  ],
   "engines": {
     "node": "*"
   },
   "homepage": "https://github.com/coding-house/crunchbase2",
   "dependencies": {
     "qs": "^2.3.3",
-    "request": ">= 0.0.1"
+    "request": ">=0.0.1"
   }
 }

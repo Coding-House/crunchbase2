@@ -1,4 +1,4 @@
-# Node.js wrapper for CrunchBase API V2
+# Node.js wrapper for CrunchBase API V3
 
 ## Examples
 

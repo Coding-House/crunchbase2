@@ -107,10 +107,17 @@ crunchbase.categories( {query: "1" }, function(error, results) {
 
 ## Redis support
 You can pass an object of options that [node_redis](https://github.com/NodeRedis/node_redis) recognizes as the second argument to init to enable caching of results in Redis.
-Here's an example configuration that will use the Redis URL in the REDIS_URL environment variable, falling back to localhost Redis if not set:
+node_redis needs to be installed (`npm install redis`) for this to work.
+Here's an example configuration that will use the Redis URL in the `REDIS_URL` environment variable, falling back to localhost Redis if not set:
 
 ```javascript
 var crunchbase = require('crunchbase-api');
 
 crunchbase.init(apikey, {url: process.env.REDIS_URL || 'redis://127.0.0.1:6379'});
 ```
+
+## Contributing
+Fork, make your changes, add yourself to contributors in package.json, bump version in package.json as needed, submit pull request, done!
+
+## License
+Apache 2.0

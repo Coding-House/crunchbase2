@@ -3,7 +3,16 @@
 request = require('request'),
 urlHelper = require('./util/url_helper');
 
-function init(apikey) {
+var redisClient;
+var cacheTimeout;
+var apiKey;
+
+function init(apikey, cache) {
+  if (cache) {
+    cacheTimeout = cache.timeout || 86400;
+    redisClient = require("redis").createClient(cache);
+  }
+  apiKey = apikey;
   urlHelper.init(apikey);
 }
 
@@ -68,18 +77,34 @@ function getCatagories(params, callback) {
 }
 
 function createRequest(url, callback) {
-  request(url, function (error, response, body) {
-    try {
-      callback(error, JSON.parse(body));
-    } catch (error) {
-      callback(error, body);
-    }
-  });
+  if (redisClient) {
+    var cleanedUrl = url.replace('?user_key=' + apiKey + '&','?');
+    redisClient.get(cleanedUrl, function(err, obj) {
+      if (err || obj === null) {
+        return request(url, function (error, response, body) {
+          if (!err) {
+            redisClient.set(cleanedUrl, JSON.stringify(JSON.parse(body)));
+            redisClient.expire(cleanedUrl, cacheTimeout);
+          }
+          callback(error, JSON.parse(body));
+        });
+      }
+      callback(err, JSON.parse(obj));
+    })
+  } else {
+    request(url, function (error, response, body) {
+      try {
+        callback(error, JSON.parse(body));
+      } catch (error) {
+        callback(error, body);
+      }
+    });
+  }
 }
 
 module.exports = {
-  init: function(apikey) {
-    return init(apikey);
+  init: function(apikey, cache) {
+    return init(apikey, cache);
   },
   organizations: function(params, callback) {
     return getOrganizations(params, callback);

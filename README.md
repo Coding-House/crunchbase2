@@ -3,7 +3,7 @@
 ## Examples
 
 ```javascript
-var crunchbase = require('crunchbase2');
+var crunchbase = require('crunchbase-api');
 
 // Init the object with your API key
 crunchbase.init(apikey);
@@ -110,7 +110,7 @@ You can pass an object of options that [node_redis](https://github.com/NodeRedis
 Here's an example configuration that will use the Redis URL in the REDIS_URL environment variable, falling back to localhost Redis if not set:
 
 ```javascript
-var crunchbase = require('crunchbase2');
+var crunchbase = require('crunchbase-api');
 
 crunchbase.init(apikey, {url: process.env.REDIS_URL || 'redis://127.0.0.1:6379'});
 ```
